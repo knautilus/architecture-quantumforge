@@ -2,7 +2,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 INDEX_DIR = "faiss.index"
-
+NUMBER_OF_DOCUMENTS = 3
 DEVICE = "cpu"
 MODEL_NAME = "BAAI/bge-base-en-v1.5"
 #MODEL_NAME = "cointegrated/rubert-tiny2"
@@ -25,8 +25,7 @@ index = FAISS.load_local(INDEX_DIR, embeddings, allow_dangerous_deserialization=
 
 print(f"Поиск фразы '{QUERY_TEXT}'")
 
-# ищем 5 документов
-docs = index.similarity_search(QUERY_TEXT, k=5)
+docs = index.similarity_search(QUERY_TEXT, k=NUMBER_OF_DOCUMENTS)
 
 for number, doc in enumerate(docs, 1):
     print(f"Результат {number}:")
