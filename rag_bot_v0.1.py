@@ -31,7 +31,7 @@ index = FAISS.load_local(INDEX_DIR, embeddings, allow_dangerous_deserialization=
 retriever = index.as_retriever()
 # Chatbot
 
-instruction_prompt = """Ты помощник, который отвечает ТОЛЬКО на основе предоставленного контекста. ВСЕГДА отвечай на русском языке. Если в базе знаний нет ответа на вопрос, то отвечай 'Я не знаю'
+instruction_prompt = """Ты помощник, который отвечает на вопросы ТОЛЬКО на основе предоставленного контекста. ВСЕГДА отвечай на русском языке. Если в базе знаний нет ответа на вопрос, то отвечай 'Я не знаю'
 Вопрос: {question} 
 Контекст: {context} 
 Ответ:
@@ -43,13 +43,10 @@ while True:
         if input_query.lower() in ("exit", "quit"):
             break
         if input_query.strip():
-            answer = retrieve(llm, input_query, index, ChatPromptTemplate.from_template(instruction_prompt))
+            answer = retrieve(llm, input_query, retriever, ChatPromptTemplate.from_template(instruction_prompt))
             print("Ответ:")
             print(answer)
             print("—" * 10)
     except KeyboardInterrupt:
         print("До свидания!")
-        break
-    except Exception as e:
-        print(f"Ошибка: {e}")
         break
