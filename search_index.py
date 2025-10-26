@@ -12,8 +12,8 @@ MODEL_NAME = "BAAI/bge-base-en-v1.5"
 #MODEL_NAME = "ai-forever/sbert_large_mt_nlu_ru"
 #MODEL_NAME = "DeepPavlov/rubert-base-cased-sentence"
 
-#QUERY_TEXT = "Саша Скил"
-QUERY_TEXT = "кризис подливиона"
+QUERY_TEXT = "Саша Скил"
+#QUERY_TEXT = "кризис подливиона"
 #QUERY_TEXT = "древний манускрипт"
 
 embeddings = HuggingFaceEmbeddings(
