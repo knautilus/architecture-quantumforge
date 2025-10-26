@@ -18,7 +18,7 @@ def create_chunks(file_path):
     loader = TextLoader(file_path, encoding='utf-8')
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
+        chunk_size=512,
         chunk_overlap=50,
         length_function=len,
         separators=[

@@ -12,7 +12,7 @@ DEVICE = "cpu"
 MODEL_NAME = "BAAI/bge-base-en-v1.5"
 
 # Поиск релевантного контекста
-def search_context(query, index, embedder, top_k=5):
+def search_context(query, index, embedder, top_k=10):
     docs = index.similarity_search(query, k=top_k)
     context_chunks = []
     for doc in docs:
